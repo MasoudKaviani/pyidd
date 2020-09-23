@@ -1,0 +1,15 @@
+import setuptools
+
+with open('README.md', 'r') as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+    name='idd',
+    version='0.1',
+    scripts=['idd'],
+    author='Masoud Kaviani',
+    author_email='kaviani.masoud@gmail.com',
+    description='Identify the Distribution of your Data',
+    url="https://github.com/masoud.kaviani/idd"
+    
+)
