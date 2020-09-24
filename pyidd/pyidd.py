@@ -1,29 +1,45 @@
 import numpy as np
 import pandas as pd
 import scipy.stats as st
-import statsmodels.api as sm
 import matplotlib
 import matplotlib.pyplot as plt
 import warnings
 
 class PyIDD:
-    def __init__(self):
+    def __init__(self, verbose=0):
         self.distributions = {}
         self.data = pd.Series()
         self.x = []
+        self.verbose = verbose
+        self.fitted = False
     
     def plot(self, bins=100, top=5, figsize=(16, 12)):
+        if self.fitted == False:
+            raise Exception('You must first fit your data with .fit() function')
+
         sd = sorted(self.distributions.items(), key=lambda x: x[1]['SSE'])
         ax = self.data.plot(kind='hist', bins=bins, normed=True, alpha=0.5, figsize=figsize)
         sd = sd[:top]
-        # print(self.distributions)
+
         for k, v in sd:
             pdf = v['pdf']
             sse = round(v['SSE'], 2)
             pd.Series(pdf, self.x).plot(ax=ax, legend=True, label=str(k) + str(' (' + str(sse) + ')'))
 
     def get_distributions(self):
-        return self.distribution
+        if self.fitted == False:
+            raise Exception('You must first fit your data with .fit() function')
+
+        sd = sorted(self.distributions.items(), key=lambda x: x[1]['SSE'])
+        r = []
+        for k, v in sd:
+            r.append(
+                (k, {
+                    'SSE': v['SSE'],
+                    'params': v['params']
+                })
+            )
+        return r
     
     def fit(self, data):
         try:
@@ -64,7 +80,9 @@ class PyIDD:
             try:
                 with warnings.catch_warnings():
                     warnings.filterwarnings('ignore')
-                    # print('distribution: ' + str(type(distribution).__name__))
+                    
+                    if self.verbose > 0:
+                        print('distribution: ' + str(type(distribution).__name__))
 
                     params = distribution.fit(data)
                     arg = params[:-2]
@@ -75,7 +93,9 @@ class PyIDD:
                     pdf = distribution.pdf(x, loc=loc, scale=scale, *arg)
                     sse = np.sum(np.power(y - pdf, 2.0))
 
-                    # print('#SSE: ' + str(sse))
+                    if self.verbose > 0:
+                        print('#SSE: ' + str(sse))
+                        print('#params: ' + str(params))
 
                     self.distributions[str(type(distribution).__name__)] = {
                         'SSE': sse,
@@ -89,8 +109,6 @@ class PyIDD:
                         best_sse = sse
             except Exception:
                 pass
-
-# data = pd.Series(sm.datasets.elnino.load_pandas().data.set_index('YEAR').values.ravel())
-# p = PyIDD()
-# p.fit(data)
-# p.plot()
+        
+        self.fitted = True
+        return self
