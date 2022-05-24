@@ -10,7 +10,7 @@ pip install pyidd
 
 ## Usage
 ```python
-from pyidd import pyidd
+import pyidd
 import statsmodels.api as sm
 
 # Load sample dataset (data is an one dimensional array)

@@ -8,7 +8,7 @@ import warnings
 class PyIDD:
     def __init__(self, verbose=0):
         self.distributions = {}
-        self.data = pd.Series()
+        self.data = pd.Series(dtype='float64')
         self.x = []
         self.verbose = verbose
         self.fitted = False
@@ -18,7 +18,7 @@ class PyIDD:
             raise Exception('You must first fit your data with .fit() function')
 
         sd = sorted(self.distributions.items(), key=lambda x: x[1]['SSE'])
-        ax = self.data.plot(kind='hist', bins=bins, normed=True, alpha=0.5, figsize=figsize)
+        ax = self.data.plot(kind='hist', bins=bins, stacked=True, density=True, alpha=0.5, figsize=figsize)
         sd = sd[:top]
 
         for k, v in sd:

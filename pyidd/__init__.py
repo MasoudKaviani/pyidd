@@ -1,1 +1,1 @@
-import pyidd
+from .main import PyIDD
