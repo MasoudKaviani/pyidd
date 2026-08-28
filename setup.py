@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 setup(
     name='pyidd',
-    version='0.3.1',
+    version='0.4.0',
     packages=find_packages(exclude=['tests*', 'examples*']),
     license='MIT',
     description='Identify the Distribution of Data',
