@@ -57,8 +57,6 @@ We use almost all scipy.stats continiuse distributions (Notics: The distribution
 - fisk
 - foldcauchy
 - foldnorm
-- frechet_r
-- frechet_l
 - genlogistic
 - gennorm
 - genpareto
@@ -69,7 +67,6 @@ We use almost all scipy.stats continiuse distributions (Notics: The distribution
 - gengamma
 - genhalflogistic
 - geninvgauss
-- gilbrat
 - gompertz
 - gumbel_r
 - gumbel_l
@@ -118,7 +115,7 @@ We use almost all scipy.stats continiuse distributions (Notics: The distribution
 - semicircular
 - skewnorm
 - t
-- trapz
+- trapezoid
 - triang
 - truncexpon
 - truncnorm

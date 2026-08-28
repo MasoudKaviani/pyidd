@@ -1,8 +1,6 @@
 import numpy as np
 import pandas as pd
 import scipy.stats as st
-import matplotlib
-import matplotlib.pyplot as plt
 import warnings
 
 class PyIDD:
@@ -58,16 +56,16 @@ class PyIDD:
             st.burr, st.burr12, st.cauchy, st.chi, st.chi2, st.cosine, st.crystalball,
             st.dgamma, st.dweibull, st.erlang, st.expon, st.exponnorm, st.exponweib,
             st.exponpow, st.f, st.fatiguelife, st.fisk, st.foldcauchy, st.foldnorm,
-            st.frechet_r, st.frechet_l, st.genlogistic, st.gennorm, st.genpareto,
+            st.genlogistic, st.gennorm, st.genpareto,
             st.genexpon, st.genextreme, st.gausshyper, st.gamma, st.gengamma, st.genhalflogistic,
-            st.geninvgauss, st.gilbrat, st.gompertz, st.gumbel_r, st.gumbel_l, st.halfcauchy,
+            st.geninvgauss, st.gompertz, st.gumbel_r, st.gumbel_l, st.halfcauchy,
             st.halflogistic, st.halfnorm, st.halfgennorm, st.hypsecant, st.invgamma, st.invgauss,
             st.invweibull, st.johnsonsb, st.johnsonsu, st.kappa4, st.kappa3, st.ksone, st.kstwo,
             st.kstwobign, st.laplace, st.levy, st.levy_l, st.logistic, st.loggamma,
             st.loglaplace, st.lognorm, st.loguniform, st.lomax, st.maxwell, st.mielke, st.moyal,
             st.nakagami, st.ncx2, st.ncf, st.nct, st.norm, st.norminvgauss, st.pareto, st.pearson3,
             st.powerlaw, st.powerlognorm, st.powernorm, st.rdist, st.rayleigh, st.rice, st.recipinvgauss,
-            st.semicircular, st.skewnorm, st.t, st.trapz, st.triang, st.truncexpon, st.truncnorm,
+            st.semicircular, st.skewnorm, st.t, st.trapezoid, st.triang, st.truncexpon, st.truncnorm,
             st.tukeylambda, st.uniform, st.vonmises, st.vonmises_line, st.wald, st.weibull_min,
             st.weibull_max, st.wrapcauchy
         ]

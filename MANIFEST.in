@@ -1,1 +1,2 @@
-include myPackage/packageData/sampleData.dat
+include LICENSE
+include README.md
